@@ -19,7 +19,7 @@ class CartService {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
-        return Order.fromJson(data, userUid);
+        return Order.fromJson(data);
       } else if (response.statusCode == 404) {
           return null; //cart not found
       } else { //internal sever problem
@@ -48,7 +48,7 @@ class CartService {
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
-        return data.map((order) => Order.fromJson(order, userUid)).toList();
+        return data.map((order) => Order.fromJson(order)).toList();
       } else { //internal sever problem
         throw Exception('Failed to load cart: ${response.statusCode}');
       }
@@ -108,7 +108,7 @@ class CartService {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
-        return Order.fromJson(data, userUid); // Assuming Order.fromJson can handle partial updates or takes a userUid
+        return Order.fromJson(data); // Assuming Order.fromJson can handle partial updates or takes a userUid
       } else if (response.statusCode == 404) {
         throw Exception('Order not found');
       } else {
@@ -134,7 +134,7 @@ class CartService {
 
       if (response.statusCode == 200) {
         final Map<String, dynamic> data = json.decode(response.body);
-        return Order.fromJson(data, userUid); // Assuming Order.fromJson can handle partial updates or takes a userUid
+        return Order.fromJson(data); // Assuming Order.fromJson can handle partial updates or takes a userUid
       } else if (response.statusCode == 404) {
         throw Exception('Order not found');
       } else {
